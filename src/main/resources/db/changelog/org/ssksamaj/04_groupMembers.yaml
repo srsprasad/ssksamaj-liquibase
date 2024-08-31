@@ -1,0 +1,57 @@
+databaseChangeLog:
+  - changeSet:
+      id: "001"
+      author: srsprasad 
+      runOnChange: true
+      runAlways: false
+      comment: "This change in for Table Group Members"
+      changes:
+        - createTable: 
+            tableName: GROUP_MEMBER
+            columns:
+              - column:
+                  name: ID
+                  type: INT
+                  autoIncrement: true
+                  incrementBy: 1
+                  startWith: 1
+                  constraints:
+                    nullable: false 
+                    primaryKey: true
+                    primaryKeyName: GRP_MMBR_PK_O1 
+                    deleteCascade: true
+              - column:
+                  name: GROUP_ID
+                  type: INT
+                  constraints:
+                    nullable: false
+                    referencedTableName: AUTH_GROUP
+                    referencedColumnNames: ID
+                    foreignKeyName: GRP_MMBR_FK_01
+                    deleteCascade: true
+              - column:
+                  name: USER_ID
+                  type: INT
+                  constraints:
+                    nullable: false
+                    referencedTableName: USER
+                    referencedColumnNames: ID
+                    foreignKeyName: GRP_MMBR_FK_02
+                    deleteCascade: true
+              - column:
+                  name: UPDATED_BY
+                  type: INT
+                  constraints:
+                    nullable: false
+                    referencedTableName: USER
+                    referencedColumnNames: ID
+                    foreignKeyName: GROUP_AUTH_FK_01
+                    deleteCascade: false
+                    validateNullable: true
+                    validatePrimaryKey: true
+                    validateForeignKey: true
+              - column:
+                  name: LAST_UPDATED
+                  type: TIMESTAMP
+                  constraints: 
+                    nullable: false

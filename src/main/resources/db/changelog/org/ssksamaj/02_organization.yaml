@@ -1,0 +1,51 @@
+databaseChangeLog:
+  - changeSet:
+      id: "001"
+      author: srsprasad 
+      runOnChange: true
+      runAlways: false
+      comment: "This change in for Table Organization"
+      changes:
+        - createTable: 
+            tableName: ORGANIZATION
+            columns:
+              - column:
+                  name: ID
+                  type: INT
+                  autoIncrement: true
+                  incrementBy: 1
+                  startWith: 1
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: ORGN_PK_01 
+                    unique: true
+              - column:
+                  name: NAME
+                  type: VARCHAR(50)
+              - column:
+                  name: LOCATION_NAME
+                  type: VARCHAR(30)
+              - column:
+                  name: ADDRESS
+                  type: VARCHAR(255)
+              - column:
+                  name: DESC
+                  type: VARCHAR(255)
+              - column:
+                  name: UPDATED_BY
+                  type: INT
+                  constraints:
+                    nullable: false
+                    referencedTableName: USER
+                    referencedColumnNames: ID
+                    foreignKeyName: ORGN_FK_01
+                    deleteCascade: false
+                    validateNullable: true
+                    validatePrimaryKey: true
+                    validateForeignKey: true
+              - column:
+                  name: LAST_UPDATED
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false
