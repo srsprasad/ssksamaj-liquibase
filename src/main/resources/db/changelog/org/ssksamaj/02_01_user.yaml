@@ -1,5 +1,6 @@
 databaseChangeLog:
   - changeSet:
+      objectQuotingStrategy: QUOTE_ALL_OBJECTS
       id: "001"
       author: srsprasad 
       runOnChange: true
@@ -64,13 +65,20 @@ databaseChangeLog:
                   type: CHAR
                   value: 'N'
               - column:
+                  name: ORGN_ID
+                  type: INT
+                  constraints:
+                    nullable: false
+                    referencedTableName: ORGANIZATION
+                    referencedColumnNames: ID
+                    foreignKeyName: USR_FK_01
+                    validateForeignKey: true
+                    validatePrimaryKey: true
+              - column:
                   name: UPDATED_BY
                   type: INT
                   constraints:
                     nullable: false
-                    referencedTableName: USER
-                    referencedColumnNames: ID
-                    foreignKeyName: USER_FK_01
               - column:
                   name: LAST_UPDATED
                   type: TIMESTAMP

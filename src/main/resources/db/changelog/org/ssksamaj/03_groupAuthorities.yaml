@@ -1,5 +1,6 @@
 databaseChangeLog:
   - changeSet:
+      objectQuotingStrategy: QUOTE_ALL_OBJECTS
       id: "001"
       author: srsprasad 
       runOnChange: true
@@ -34,13 +35,6 @@ databaseChangeLog:
                   type: INT
                   constraints:
                     nullable: false
-                    referencedTableName: USER
-                    referencedColumnNames: ID
-                    foreignKeyName: GROUP_AUTH_FK_02
-                    deleteCascade: false
-                    validateNullable: true
-                    validatePrimaryKey: true
-                    validateForeignKey: true
               - column:
                   name: LAST_UPDATED
                   type: TIMESTAMP
