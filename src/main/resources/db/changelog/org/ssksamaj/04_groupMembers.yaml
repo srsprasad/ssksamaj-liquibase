@@ -1,6 +1,5 @@
 databaseChangeLog:
   - changeSet:
-      objectQuotingStrategy: QUOTE_ALL_OBJECTS
       id: "001"
       author: srsprasad 
       runOnChange: true
@@ -35,7 +34,7 @@ databaseChangeLog:
                   type: INT
                   constraints:
                     nullable: false
-                    referencedTableName: USER
+                    referencedTableName: USERS
                     referencedColumnNames: ID
                     foreignKeyName: GRP_MMBR_FK_02
                     deleteCascade: true

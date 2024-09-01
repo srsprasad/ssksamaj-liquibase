@@ -1,6 +1,5 @@
 databaseChangeLog:
   - changeSet:
-      objectQuotingStrategy: QUOTE_ALL_OBJECTS
       id: "001"
       author: srsprasad 
       runOnChange: true
@@ -23,12 +22,12 @@ databaseChangeLog:
                     validatePrimaryKey: true
                     validateForeignKey: true
               - column:
-                  name: NAME
+                  name: AUTHORITY_NAME
                   type: VARCHAR(50)
                   constraints:
                     nullable: false
               - column:
-                  name: DESC
+                  name: DESCRIPTION
                   type: VARCHAR(255)
               - column:
                   name: UPDATED_BY
@@ -42,5 +41,5 @@ databaseChangeLog:
                     nullable: false
         - addPrimaryKey:
             tableName: GROUP_AUTHORITY
-            columnNames: GROUP_ID, NAME 
+            columnNames: GROUP_ID, AUTHORITY_NAME 
             constraintName: GROUP_AUTH_UNQ_01

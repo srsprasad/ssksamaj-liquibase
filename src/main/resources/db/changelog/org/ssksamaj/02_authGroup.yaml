@@ -1,6 +1,5 @@
 databaseChangeLog:
   - changeSet:
-      objectQuotingStrategy: QUOTE_ALL_OBJECTS
       id: "001"
       author: srsprasad 
       runOnChange: true
@@ -22,10 +21,10 @@ databaseChangeLog:
                     primaryKeyName: AUTH_GROUP_PK_01 
                     unique: true
               - column:
-                  name: NAME
+                  name: GROUP_NAME
                   type: VARCHAR(50)
               - column:
-                  name: DESC
+                  name: DESCRIPTION
                   type: VARCHAR(255)
               - column:
                   name: UPDATED_BY

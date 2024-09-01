@@ -1,5 +1,4 @@
 databaseChangeLog:
-  -  objectQuotingStrategy: QUOTE_ALL_OBJECTS
   - includeAll:
       path: /org/ssksamaj/
       errorIfMissingOrEmpty: true
