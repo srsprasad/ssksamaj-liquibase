@@ -1,0 +1,71 @@
+databaseChangeLog:
+  - changeSet:
+      id: "001"
+      author: srsprasad 
+      runOnChange: true
+      runAlways: false
+      comment: "This change in for Table Chit Payment"
+
+      changes:
+        - createTable:
+            tableName: CHIT_PYMT
+            columns:
+              - column:
+                  name: ID
+                  type: INT
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: AUCT_ID
+                  type: INT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: RNWL_MEMR_ID
+                  type: INT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: PYMT_AMT
+                  type: NUMERIC(19,2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: PAID_DATE
+                  type: DATE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: PYMT_STUS
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: CRTD_DATE
+                  type: TIMESTAMP
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: UPTD_DATE
+                  type: TIMESTAMP
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+
+        - addForeignKeyConstraint:
+            baseTableName: CHIT_PYMT
+            baseColumnNames: AUCT_ID
+            constraintName: CHIT_PYMT_FK_01
+            referencedTableName: CHIT_AUCT
+            referencedColumnNames: ID
+            onDelete: CASCADE
+
+        - addForeignKeyConstraint:
+            baseTableName: CHIT_PYMT
+            baseColumnNames: RNWL_MEMR_ID
+            constraintName: CHIT_PYMT_FK_02
+            referencedTableName: CHIT_MEMR_ASSN
+            referencedColumnNames: ID
+            onDelete: CASCADE

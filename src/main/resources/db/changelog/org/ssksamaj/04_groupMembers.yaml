@@ -30,11 +30,11 @@ databaseChangeLog:
                     foreignKeyName: GRP_MMBR_FK_01
                     deleteCascade: true
               - column:
-                  name: USER_ID
+                  name: MEMBER_ID
                   type: INT
                   constraints:
                     nullable: false
-                    referencedTableName: USERS
+                    referencedTableName: MEMBER
                     referencedColumnNames: ID
                     foreignKeyName: GRP_MMBR_FK_02
                     deleteCascade: true

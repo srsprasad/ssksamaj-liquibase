@@ -1,0 +1,49 @@
+databaseChangeLog:
+  - changeSet:
+      id: "001"
+      author: srsprasad 
+      runOnChange: true
+      runAlways: false
+      comment: "This change in for Table Chit members"
+
+      changes:
+        - createTable:
+            tableName: CHIT_MEMR_ASSN
+            columns:
+              - column:
+                  name: ID
+                  type: INT
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: RNWL_ID
+                  type: INT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: MEMR_ID
+                  type: INT
+                  constraints:
+                    nullable: false
+
+        - addUniqueConstraint:
+            tableName: CHIT_MEMR_ASSN
+            columnNames: RNWL_ID, MEMR_ID
+            constraintName: CHIT_MEMR_ASSN_UQ_01
+
+        - addForeignKeyConstraint:
+            baseTableName: CHIT_MEMR_ASSN
+            baseColumnNames: RNWL_ID
+            constraintName: CHIT_MEMR_ASSN_FK_01
+            referencedTableName: CHIT_RNWL
+            referencedColumnNames: ID
+            onDelete: CASCADE
+
+        - addForeignKeyConstraint:
+            baseTableName: CHIT_MEMR_ASSN
+            baseColumnNames: MEMR_ID
+            constraintName: CHIT_MEMR_ASSN_FK_02
+            referencedTableName: MEMBER
+            referencedColumnNames: ID
+            onDelete: CASCADE

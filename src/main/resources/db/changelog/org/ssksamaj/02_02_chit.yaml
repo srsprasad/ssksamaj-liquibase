@@ -1,0 +1,43 @@
+databaseChangeLog:
+  - changeSet:
+      id: "001"
+      author: srsprasad 
+      runOnChange: true
+      runAlways: false
+      comment: "This change in for Table Chit"
+      changes:
+        - createTable:
+            tableName: CHIT
+            columns:
+              - column:
+                  name: ID
+                  type: INT
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: PRPL_AMT
+                  type: NUMERIC(19,2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: AGNT_CMSN_PRCT
+                  type: NUMERIC(19,2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: MEMR_CMSN_PRCT
+                  type: NUMERIC(19,2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: MEMR_CNT
+                  type: INT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: CRTD_DATE
+                  type: TIMESTAMP
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
