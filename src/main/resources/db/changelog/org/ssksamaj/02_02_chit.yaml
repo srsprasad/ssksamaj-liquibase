@@ -16,6 +16,11 @@ databaseChangeLog:
                     primaryKey: true
                     nullable: false
               - column:
+                  name: ORGN_ID
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
                   name: PRPL_AMT
                   type: NUMERIC(19,2)
                   constraints:
@@ -41,3 +46,10 @@ databaseChangeLog:
                   defaultValueComputed: CURRENT_TIMESTAMP
                   constraints:
                     nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: CHIT
+            baseColumnNames: ORGN_ID
+            referencedTableName: ORGANIZATION
+            referencedColumnNames: id
+            constraintName: CHIT_FK_01
+            onDelete: CASCADE
